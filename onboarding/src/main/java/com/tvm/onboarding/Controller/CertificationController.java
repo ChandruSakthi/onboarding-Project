@@ -2,12 +2,12 @@ package com.tvm.onboarding.Controller;
 
 import com.tvm.onboarding.Model.Certification;
 import com.tvm.onboarding.Service.CertificationService;
+import com.tvm.onboarding.dto.ResponseStructure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("certification")
@@ -15,8 +15,33 @@ public class CertificationController {
     @Autowired
     private CertificationService certificationService;
 
-    @PostMapping("add")
-    public ResponseEntity<Certification>  saveCertification(@RequestBody Certification certification){
-        return  certificationService.saveCertification(certification);
+    //    @PostMapping("add")
+//    public ResponseEntity<Certification>  saveCertification(@RequestBody Certification certification){
+//        return  certificationService.saveCertification(certification);
+//    }
+    @PostMapping
+    public ResponseEntity<ResponseStructure<Certification>> saveCertification(@RequestBody Certification certification) {
+        return certificationService.saveCertification(certification);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ResponseStructure<Certification>> getbyid(@PathVariable Integer id) {
+        return certificationService.getById(id);
+    }
+
+    @GetMapping
+    public ResponseEntity<ResponseStructure<List<Certification>>> getall() {
+        return certificationService.getall();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ResponseStructure<Certification>> updatebyid(@PathVariable Integer id, @RequestBody Certification certification) {
+        return certificationService.updateAll(id, certification);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ResponseStructure<String>> delete(@PathVariable Integer id) {
+        return certificationService.deletebyid(id);
+    }
+
 }

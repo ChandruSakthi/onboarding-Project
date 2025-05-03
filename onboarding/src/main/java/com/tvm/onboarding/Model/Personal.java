@@ -361,84 +361,84 @@ public class Personal {
         this.relevantYear = relevantYear;
     }
 
-    public KYC getKyc() {
-        return kyc;
-    }
-
-    public void setKyc(KYC kyc) {
-        this.kyc = kyc;
-    }
-
-    public Passport getPassport() {
-        return passport;
-    }
-
-    public void setPassport(Passport passport) {
-        this.passport = passport;
-    }
-
-    public Family getFamily() {
-        return family;
-    }
-
-    public void setFamily(Family family) {
-        this.family = family;
-    }
-
-    public List<PreviousEmployment> getPreviousEmployment() {
-        return previousEmployment;
-    }
-
-    public void setPreviousEmployment(List<PreviousEmployment> previousEmployment) {
-        this.previousEmployment = previousEmployment;
-    }
-
-    public List<Education> getEducation() {
-        return education;
-    }
-
-    public void setEducation(List<Education> education) {
-        this.education = education;
-    }
-
-    public List<Skills> getSkills() {
-        return skills;
-    }
-
-    public void setSkills(List<Skills> skills) {
-        this.skills = skills;
-    }
-
-    public List<Certification> getCertification() {
-        return certification;
-    }
-
-    public void setCertification(List<Certification> certification) {
-        this.certification = certification;
-    }
-
-    public Documents getDocuments() {
-        return documents;
-    }
-
-    public void setDocuments(Documents documents) {
-        this.documents = documents;
-    }
-
-    public Resume getResume() {
-        return resume;
-    }
-
-    public void setResume(Resume resume) {
-        this.resume = resume;
-    }
-
-    public Final getaFinal() {
-        return aFinal;
-    }
-
-    public void setaFinal(Final aFinal) {
-        this.aFinal = aFinal;
-    }
+//    public KYC getKyc() {
+//        return kyc;
+//    }
+//
+//    public void setKyc(KYC kyc) {
+//        this.kyc = kyc;
+//    }
+//
+//    public Passport getPassport() {
+//        return passport;
+//    }
+//
+//    public void setPassport(Passport passport) {
+//        this.passport = passport;
+//    }
+//
+//    public Family getFamily() {
+//        return family;
+//    }
+//
+//    public void setFamily(Family family) {
+//        this.family = family;
+//    }
+//
+//    public List<PreviousEmployment> getPreviousEmployment() {
+//        return previousEmployment;
+//    }
+//
+//    public void setPreviousEmployment(List<PreviousEmployment> previousEmployment) {
+//        this.previousEmployment = previousEmployment;
+//    }
+//
+//    public List<Education> getEducation() {
+//        return education;
+//    }
+//
+//    public void setEducation(List<Education> education) {
+//        this.education = education;
+//    }
+//
+//    public List<Skills> getSkills() {
+//        return skills;
+//    }
+//
+//    public void setSkills(List<Skills> skills) {
+//        this.skills = skills;
+//    }
+//
+//    public List<Certification> getCertification() {
+//        return certification;
+//    }
+//
+//    public void setCertification(List<Certification> certification) {
+//        this.certification = certification;
+//    }
+//
+//    public Documents getDocuments() {
+//        return documents;
+//    }
+//
+//    public void setDocuments(Documents documents) {
+//        this.documents = documents;
+//    }
+//
+//    public Resume getResume() {
+//        return resume;
+//    }
+//
+//    public void setResume(Resume resume) {
+//        this.resume = resume;
+//    }
+//
+//    public Final getaFinal() {
+//        return aFinal;
+//    }
+//
+//    public void setaFinal(Final aFinal) {
+//        this.aFinal = aFinal;
+//    }
 }
 
