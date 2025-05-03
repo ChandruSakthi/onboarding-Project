@@ -1,12 +1,9 @@
 package com.tvm.onboarding.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.Data;
 
-@Data
 @Entity
 public class Family {
     @Id
@@ -21,5 +18,88 @@ public class Family {
     private String spouseGender;
     private String children;
 
+    @OneToOne
+    @JoinColumn(name = "personal_id")
+    @JsonBackReference
+    private Personal personal;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFatherName() {
+        return fatherName;
+    }
+
+    public void setFatherName(String fatherName) {
+        this.fatherName = fatherName;
+    }
+
+    public String getFatherDOB() {
+        return fatherDOB;
+    }
+
+    public void setFatherDOB(String fatherDOB) {
+        this.fatherDOB = fatherDOB;
+    }
+
+    public String getMotherName() {
+        return motherName;
+    }
+
+    public void setMotherName(String motherName) {
+        this.motherName = motherName;
+    }
+
+    public String getMotherDOB() {
+        return motherDOB;
+    }
+
+    public void setMotherDOB(String motherDOB) {
+        this.motherDOB = motherDOB;
+    }
+
+    public String getSpouseName() {
+        return spouseName;
+    }
+
+    public void setSpouseName(String spouseName) {
+        this.spouseName = spouseName;
+    }
+
+    public String getSpouseDOB() {
+        return spouseDOB;
+    }
+
+    public void setSpouseDOB(String spouseDOB) {
+        this.spouseDOB = spouseDOB;
+    }
+
+    public String getSpouseGender() {
+        return spouseGender;
+    }
+
+    public void setSpouseGender(String spouseGender) {
+        this.spouseGender = spouseGender;
+    }
+
+    public String getChildren() {
+        return children;
+    }
+
+    public void setChildren(String children) {
+        this.children = children;
+    }
+
+    public Personal getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(Personal personal) {
+        this.personal = personal;
+    }
 }

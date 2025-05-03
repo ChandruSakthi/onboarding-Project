@@ -1,13 +1,10 @@
 package com.tvm.onboarding.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Data
 public class Certification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,4 +13,57 @@ public class Certification {
     private String certifiedBy;
     private String completionDate;
     private Long marks;
+
+    @ManyToOne
+    @JoinColumn(name = "personal_id")
+    @JsonBackReference
+    private Personal personal;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCertificateName() {
+        return certificateName;
+    }
+
+    public void setCertificateName(String certificateName) {
+        this.certificateName = certificateName;
+    }
+
+    public String getCertifiedBy() {
+        return certifiedBy;
+    }
+
+    public void setCertifiedBy(String certifiedBy) {
+        this.certifiedBy = certifiedBy;
+    }
+
+    public String getCompletionDate() {
+        return completionDate;
+    }
+
+    public void setCompletionDate(String completionDate) {
+        this.completionDate = completionDate;
+    }
+
+    public Long getMarks() {
+        return marks;
+    }
+
+    public void setMarks(Long marks) {
+        this.marks = marks;
+    }
+
+    public Personal getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(Personal personal) {
+        this.personal = personal;
+    }
 }

@@ -13,8 +13,15 @@ public class PersonalService {
     @Autowired
     private PersonalRepository personalRepository;
 
-    public ResponseEntity<Personal> savePersonalInfo(Personal personal){
+    public ResponseEntity<Personal> savePersonalInfo(Personal personal) {
         return new ResponseEntity<>(personalRepository.save(personal), HttpStatus.CREATED);
+
     }
 
+    public ResponseEntity<Personal> findAllDetailsUsingName(String name) {
+        return new ResponseEntity<>(personalRepository.findByFname(name), HttpStatus.OK);
+    }
+
+
 }
+
