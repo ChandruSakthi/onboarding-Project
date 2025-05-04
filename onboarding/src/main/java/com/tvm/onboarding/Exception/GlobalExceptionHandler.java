@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(FamilyNotFoundException.class)
     public ResponseEntity<ResponseStructure<String>> handle(FamilyNotFoundException exception) {
         ResponseStructure<String> structure = new ResponseStructure<>();
-        structure.setBody("ID not Found");
+        structure.setMessage("ID not Found");
         structure.setBody(exception.getMessage());
         structure.setStatusCode(HttpStatus.NOT_FOUND.value());
         return new ResponseEntity<>(structure, HttpStatus.NOT_FOUND);
