@@ -22,7 +22,7 @@ public class ResumeService {
         Resume saved=resumeRepository.save(resume);
         ResponseStructure<Resume>resumeDTO=new ResponseStructure<>();
         resumeDTO.setBody(saved);
-        resumeDTO.setMessage("");
+        resumeDTO.setMessage("Resume Added Successfully...");
         resumeDTO.setStatusCode(HttpStatus.CREATED.value());
         return new ResponseEntity<>(resumeDTO,HttpStatus.CREATED);
     }

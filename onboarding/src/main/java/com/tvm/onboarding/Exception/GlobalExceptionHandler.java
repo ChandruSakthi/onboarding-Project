@@ -16,6 +16,14 @@ public class GlobalExceptionHandler {
         structure.setStatusCode(HttpStatus.NOT_FOUND.value());
         return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(PersonalNotFoundException.class)
+    public ResponseEntity<ResponseStructure<String>> handleUNFE(PersonalNotFoundException exception) {
+        ResponseStructure<String> structure = new ResponseStructure<>();
+        structure.setBody("ID Not Found");
+        structure.setMessage(exception.getMessage());
+        structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+        return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+    }
 
     @ExceptionHandler(EducationNotFoundException.class)
     public ResponseEntity<ResponseStructure<String>> handle(EducationNotFoundException exception) {
@@ -46,6 +54,38 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(PreviousEmploymentNotFoundException.class)
     public ResponseEntity<ResponseStructure<String>> handle(PreviousEmploymentNotFoundException exception) {
+        ResponseStructure<String> structure = new ResponseStructure<>();
+        structure.setBody("Id Not Found");
+        structure.setMessage(exception.getMessage());
+        structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+        return new ResponseEntity<>(structure, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(SkillsNotFoundException.class)
+    public ResponseEntity<ResponseStructure<String>> handle(SkillsNotFoundException exception) {
+        ResponseStructure<String> structure = new ResponseStructure<>();
+        structure.setBody("Id Not Found");
+        structure.setMessage(exception.getMessage());
+        structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+        return new ResponseEntity<>(structure, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(FinalNotFoundException.class)
+    public ResponseEntity<ResponseStructure<String>> handle(FinalNotFoundException exception) {
+        ResponseStructure<String> structure = new ResponseStructure<>();
+        structure.setBody("Id Not Found");
+        structure.setMessage(exception.getMessage());
+        structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+        return new ResponseEntity<>(structure, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(PassportNotFoundException.class)
+    public ResponseEntity<ResponseStructure<String>> handle(PassportNotFoundException exception) {
+        ResponseStructure<String> structure = new ResponseStructure<>();
+        structure.setBody("Id Not Found");
+        structure.setMessage(exception.getMessage());
+        structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+        return new ResponseEntity<>(structure, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(KYCNotFoundException.class)
+    public ResponseEntity<ResponseStructure<String>> handle(KYCNotFoundException exception) {
         ResponseStructure<String> structure = new ResponseStructure<>();
         structure.setBody("Id Not Found");
         structure.setMessage(exception.getMessage());

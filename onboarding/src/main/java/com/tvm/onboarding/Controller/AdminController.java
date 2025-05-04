@@ -2,6 +2,7 @@ package com.tvm.onboarding.Controller;
 
 import com.tvm.onboarding.Model.Admin;
 import com.tvm.onboarding.Service.AdminService;
+import com.tvm.onboarding.dto.ResponseStructure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,11 +17,11 @@ public class AdminController {
     private AdminService adminService;
 
     @PostMapping
-    public ResponseEntity<String> RegisterAdmin(@RequestBody Admin admin) {
+    public ResponseEntity<ResponseStructure<Admin>> RegisterAdmin(@RequestBody Admin admin) {
         return adminService.saveAdmin(admin);
     }
 
-    @PostMapping("/login")
+    @GetMapping ("/login")
     public ResponseEntity<Optional<Admin>> VerifyAdmin(@RequestBody Admin admin) {
         return adminService.login(admin.getEmail(), admin.getPassword());
     }

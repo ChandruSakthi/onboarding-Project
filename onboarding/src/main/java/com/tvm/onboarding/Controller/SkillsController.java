@@ -16,7 +16,7 @@ public class SkillsController {
     @Autowired
     private SkillsService skillsService;
 
-    @PostMapping("add")
+    @PostMapping
     public ResponseEntity<ResponseStructure<Skills>> saveSkills(@RequestBody Skills skills){
         return  skillsService.saveSkills(skills);
     }
@@ -24,7 +24,7 @@ public class SkillsController {
     public ResponseEntity<ResponseStructure<Skills>> findById(@PathVariable Integer id) {
         return skillsService.getbyid(id);
     }
-    @GetMapping("")
+    @GetMapping
     public ResponseEntity<ResponseStructure<List<Skills>>> findAllSkills() {
         return skillsService.getall();
     }

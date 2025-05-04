@@ -16,7 +16,7 @@ public class PreviousEmploymentController {
     @Autowired
     private PreviousEmploymentService previousEmploymentService;
 
-    @PostMapping("add")
+    @PostMapping
     public ResponseEntity<ResponseStructure<PreviousEmployment>> saveEmployment( @RequestBody PreviousEmployment previousEmployment){
         return  previousEmploymentService.saveEmployment(previousEmployment);
     }

@@ -16,7 +16,7 @@ public class KYCController {
     @Autowired
    private KYCService kycService;
 
-    @PostMapping("add")
+    @PostMapping
     public ResponseEntity<ResponseStructure<KYC>> saveKYC(@RequestBody KYC kyc){
         return  kycService.saveKyc(kyc);
     }
@@ -31,7 +31,7 @@ public class KYCController {
         return kycService.updateKyc(kyc,id);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<ResponseStructure<List<KYC>>> getAll(){
         return kycService.getAllKyc();
     }

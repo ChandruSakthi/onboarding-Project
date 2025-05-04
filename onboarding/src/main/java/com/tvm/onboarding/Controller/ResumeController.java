@@ -17,7 +17,7 @@ public class ResumeController {
     @Autowired
     private ResumeService resumeService;
 
-    @PostMapping("add")
+    @PostMapping
     public ResponseEntity<ResponseStructure<Resume>> saveResume(@RequestBody Resume  resume){
         return  resumeService.saveResume(resume);
     }
@@ -29,6 +29,7 @@ public class ResumeController {
     public ResponseEntity<ResponseStructure<List<Resume>>> findAllResume(){
         return resumeService.getAllResume();
     }
+
     @PutMapping("{id}")
     public ResponseEntity<ResponseStructure<Resume>> updateById(@RequestBody Resume resume,@PathVariable Integer id){
         return resumeService.updateResume(resume,id);

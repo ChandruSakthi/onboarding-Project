@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,18 +31,26 @@ public class PersonalService {
 
         return new ResponseEntity<>(structure, HttpStatus.CREATED);
     }
+
 //Search Methods
 
+    public ResponseEntity<ResponseStructure<List<Personal>>> findAllDetailsUsingName(String name) {
+        ResponseStructure<List<Personal>> structure = new ResponseStructure<>();
+        List<Personal> personals = personalRepository.findByFname(name);
 
-    public ResponseEntity<ResponseStructure<Personal>> findAllDetailsUsingName(String name) {
-        ResponseStructure<Personal> structure = new ResponseStructure<>();
-//        Personal savePersonal = personalRepository.findByFname(name);
-//
-//        structure.setMessage("Successfully Found the name");
-//        structure.setBody(savePersonal);
-//        structure.setStatusCode(HttpStatus.OK.value());
-        return new ResponseEntity<>(structure, HttpStatus.OK);
+        if (personals != null && !personals.isEmpty()) {
+            structure.setMessage("Successfully found records with name: " + name);
+            structure.setBody(personals);
+            structure.setStatusCode(HttpStatus.OK.value());
+            return new ResponseEntity<>(structure, HttpStatus.OK);
+        } else {
+            structure.setMessage("No records found with name: " + name);
+            structure.setBody(Collections.emptyList());
+            structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+            return new ResponseEntity<>(structure, HttpStatus.NOT_FOUND);
+        }
     }
+
     //CRUD Methods
 
     public ResponseEntity<ResponseStructure<Personal>> findById(Integer id) {

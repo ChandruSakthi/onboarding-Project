@@ -18,13 +18,13 @@ public class PersonalController {
     @Autowired
     private PersonalService personalService;
 
-    @PostMapping("add")
+    @PostMapping
     public ResponseEntity<ResponseStructure<Personal>> savePersonalInfo(@RequestBody Personal personal){
         return personalService.savePersonalInfo(personal);
     }
 
     @GetMapping("/searchByName/{name}")
-    public ResponseEntity<ResponseStructure<Personal>> serachDetailsByName(@PathVariable String name){
+    public ResponseEntity<ResponseStructure<List<Personal>>> serachDetailsByName(@PathVariable String name){
         return personalService.findAllDetailsUsingName(name);
     }
 
