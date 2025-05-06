@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .container {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+        }
+        .header {
+            background-color: #4CAF50;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 0 0 10px 10px;
+        }
+    .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2>Welcome to the Onboarding Portal!</h2>
+    </div>
+    <div class="content">
+        <p>Hello <strong>John Doe</strong>,</p>
+        <p>Your account has been <strong>successfully registered</strong>.</p>
+        <p>
+            <b>Username:</b> <span>johndoe</span><br/>
+            <b>Password:</b> <span>password123</span>
+        </p>
+        <p>
+            <a href="http://example.com/login" class="button">Click here to Login</a>
+        </p>
+        <p>Regards,<br/>Onboarding Team</p>
+    </div>
+</div>
+</body>
+</html>

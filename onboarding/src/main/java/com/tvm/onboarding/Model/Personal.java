@@ -2,7 +2,6 @@ package com.tvm.onboarding.Model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -35,7 +34,7 @@ public class Personal {
     private String permanent_address;
     private String permanent_country;
     private String permanent_state;
-    private String permanent_city;
+    private String permanentCity;
     private Long permanent_pincode;
 
     // BCP Address
@@ -46,7 +45,7 @@ public class Personal {
     private Long bcp_pincode;
 
     private Long current_contact;
-    private Long permanent_contact;
+    private Long permanentContact;
     private String emergency_contact_name;
     private Long emergency_contact_number;
     private String emergency_relationship;
@@ -241,12 +240,13 @@ public class Personal {
         this.permanent_state = permanent_state;
     }
 
-    public String getPermanent_city() {
-        return permanent_city;
+
+    public String getPermanentCity() {
+        return permanentCity;
     }
 
-    public void setPermanent_city(String permanent_city) {
-        this.permanent_city = permanent_city;
+    public void setPermanentCity(String permanentCity) {
+        this.permanentCity = permanentCity;
     }
 
     public Long getPermanent_pincode() {
@@ -305,12 +305,12 @@ public class Personal {
         this.current_contact = current_contact;
     }
 
-    public Long getPermanent_contact() {
-        return permanent_contact;
+    public Long getPermanentContact() {
+        return permanentContact;
     }
 
-    public void setPermanent_contact(Long permanent_contact) {
-        this.permanent_contact = permanent_contact;
+    public void setPermanentContact(Long permanentContact) {
+        this.permanentContact = permanentContact;
     }
 
     public String getEmergency_contact_name() {

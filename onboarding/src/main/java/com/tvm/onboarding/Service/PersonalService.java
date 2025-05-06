@@ -7,10 +7,13 @@ import com.tvm.onboarding.Repository.PersonalRepository;
 import com.tvm.onboarding.dto.ResponseStructure;
 import org.aspectj.weaver.patterns.PerObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +24,7 @@ public class PersonalService {
     @Autowired
     private PersonalRepository personalRepository;
 
+    // Save All Classes
     public ResponseEntity<ResponseStructure<Personal>> savePersonalInfo(Personal personal) {
         ResponseStructure<Personal> structure = new ResponseStructure<>();
         Personal savedPersonal = personalRepository.save(personal);
@@ -34,6 +38,7 @@ public class PersonalService {
 
 //Search Methods
 
+    //Search all the Users By UserFirstName
     public ResponseEntity<ResponseStructure<List<Personal>>> findAllDetailsUsingName(String name) {
         ResponseStructure<List<Personal>> structure = new ResponseStructure<>();
         List<Personal> personals = personalRepository.findByFname(name);
@@ -50,9 +55,44 @@ public class PersonalService {
             return new ResponseEntity<>(structure, HttpStatus.NOT_FOUND);
         }
     }
+    //Search all the Users By City Name
+    public ResponseEntity<ResponseStructure<List<Personal>>> findAllDetailsUsingCity(String city) {
+        ResponseStructure<List<Personal>> structure = new ResponseStructure<>();
+        List<Personal> personals = personalRepository.findByPermanentCity(city);
+
+        if (personals != null && !personals.isEmpty()) {
+            structure.setMessage("Successfully found records with City: " + city);
+            structure.setBody(personals);
+            structure.setStatusCode(HttpStatus.OK.value());
+            return new ResponseEntity<>(structure, HttpStatus.OK);
+        } else {
+            structure.setMessage("No records found with City: " + city);
+            structure.setBody(Collections.emptyList());
+            structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+            return new ResponseEntity<>(structure, HttpStatus.NOT_FOUND);
+        }
+    }
+    //Search all the Users By Contact No
+    public ResponseEntity<ResponseStructure<Personal>> findAllDetailsUsingPhone(Long contact) {
+        ResponseStructure<Personal> structure = new ResponseStructure<>();
+        Optional<Personal> personals = personalRepository.findByPermanentContact(contact);
+
+        if (personals.isEmpty()) {
+//
+            throw new PersonalNotFoundException("No User with th Contact No :"+contact);
+        }
+        structure.setMessage("Successfully found records with the Contact No: " + contact);
+            structure.setBody(personals.get());
+            structure.setStatusCode(HttpStatus.OK.value());
+            return new ResponseEntity<>(structure, HttpStatus.OK);
+
+    }
+
+
 
     //CRUD Methods
 
+    // Find All Details using Id
     public ResponseEntity<ResponseStructure<Personal>> findById(Integer id) {
         ResponseStructure<Personal> structure = new ResponseStructure<>();
 
@@ -66,6 +106,7 @@ public class PersonalService {
         structure.setStatusCode(HttpStatus.OK.value());
         return new ResponseEntity<>(structure, HttpStatus.OK);
     }
+    // Update All The Class Fields
 
     public ResponseEntity<ResponseStructure<Personal>> updatePersonal(Personal personal, Integer id) {
 
@@ -88,9 +129,9 @@ public class PersonalService {
             resPersonal.setCurrent_country(personal.getCurrent_country());
             resPersonal.setPermanent_address(personal.getPermanent_address());
             resPersonal.setPermanent_state(personal.getPermanent_state());
-            resPersonal.setPermanent_city(personal.getPermanent_city());
+            resPersonal.setPermanentCity(personal.getPermanentCity());
             resPersonal.setPermanent_pincode(personal.getPermanent_pincode());
-            resPersonal.setPermanent_contact(personal.getPermanent_contact());
+            resPersonal.setPermanentContact(personal.getPermanentContact());
             resPersonal.setPermanent_country(personal.getPermanent_country());
             resPersonal.setBcp_address(personal.getBcp_address());
             resPersonal.setBcp_city(personal.getBcp_city());
@@ -113,6 +154,7 @@ public class PersonalService {
         }
     }
 
+    //Find All The User Details
     public ResponseEntity<ResponseStructure<List<Personal>>> findAllPersonal() {
         ResponseStructure<List<Personal>> structure = new ResponseStructure<>();
 
@@ -127,19 +169,21 @@ public class PersonalService {
         return new ResponseEntity<>(structure, HttpStatus.OK);
     }
 
+    // Delete The User Using Id
     public ResponseEntity<ResponseStructure<String>> deleteById(Integer id) {
         ResponseStructure<String> structure = new ResponseStructure<>();
-
         Optional<Personal> dbPersonal = personalRepository.findById(id);
         if (dbPersonal.isEmpty()) {
             throw new PersonalNotFoundException("Personal id not found:" + id);
         }
-
         personalRepository.deleteById(id);
         structure.setMessage("Personal Deleted With The Id : " + id);
         structure.setBody("Deleted with personal id");
         structure.setStatusCode(HttpStatus.OK.value());
         return new ResponseEntity<>(structure, HttpStatus.OK);
-
+    }
+    public Page<Personal> findAllAdmin(int offset, int pagesize){
+        Page<Personal> page=personalRepository.findAll(PageRequest.of(offset,pagesize));
+        return page;
 }
 }

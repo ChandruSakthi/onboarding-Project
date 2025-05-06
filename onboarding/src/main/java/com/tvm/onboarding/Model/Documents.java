@@ -2,7 +2,6 @@ package com.tvm.onboarding.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
 public class Documents {

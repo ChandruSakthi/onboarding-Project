@@ -92,5 +92,21 @@ public class GlobalExceptionHandler {
         structure.setStatusCode(HttpStatus.NOT_FOUND.value());
         return new ResponseEntity<>(structure, HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(AdminNotFoundException.class)
+    public ResponseEntity<ResponseStructure<String>> handleUNFE(AdminNotFoundException exception) {
+        ResponseStructure<String> structure = new ResponseStructure<>();
+        structure.setBody(exception.getMessage());
+        structure.setMessage(exception.getMessage());
+        structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+        return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    public ResponseEntity<ResponseStructure<String>> handleUNFE(EmployeeNotFoundException exception) {
+        ResponseStructure<String> structure = new ResponseStructure<>();
+        structure.setBody(exception.getMessage());
+        structure.setMessage(exception.getMessage());
+        structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+        return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+    }
 
 }
